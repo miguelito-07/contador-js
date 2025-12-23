@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Futebolístico</title>
+  <meta name="description" content="Quiz para quem entende de futebol brasileiro">
+</head>
+
+<body>
+
+<h1>Quiz para quem entende de futebol</h1>
+<p>Prove que você é um verdadeiro cartola ⚽</p>
+
+<form id="quiz">
+
+  <!-- PERGUNTA 1 -->
+  <h3>1. Qual clube brasileiro é conhecido como “Verdão”?</h3>
+  <input type="radio" name="pergunta1" value="Palmeiras"> Palmeiras<br>
+  <input type="radio" name="pergunta1" value="Goiás"> Goiás<br>
+  <input type="radio" name="pergunta1" value="Chapecoense"> Chapecoense<br>
+  <input type="radio" name="pergunta1" value="Mirassol"> Mirassol<br>
+
+  <!-- PERGUNTA 2 -->
+  <h3>2. Pelé marcou a maior parte de sua carreira em qual time?</h3>
+  <input type="radio" name="pergunta2" value="Santos"> Santos<br>
+  <input type="radio" name="pergunta2" value="Flamengo"> Flamengo<br>
+  <input type="radio" name="pergunta2" value="Corinthians"> Corinthians<br>
+  <input type="radio" name="pergunta2" value="Cruzeiro"> Cruzeiro<br>
+
+  <!-- PERGUNTA 3 -->
+  <h3>3. Qual cidade é sede do Maracanã?</h3>
+  <input type="radio" name="pergunta3" value="Rio de Janeiro"> Rio de Janeiro<br>
+  <input type="radio" name="pergunta3" value="Belo Horizonte"> Belo Horizonte<br>
+  <input type="radio" name="pergunta3" value="Recife"> Recife<br>
+  <input type="radio" name="pergunta3" value="Salvador"> Salvador<br>
+
+  <!-- PERGUNTA 4 -->
+  <h3>4. Quem foi o técnico do Brasil na Copa de 2002?</h3>
+  <input type="radio" name="pergunta4" value="Felipão"> Felipão<br>
+  <input type="radio" name="pergunta4" value="Parreira"> Parreira<br>
+  <input type="radio" name="pergunta4" value="Tite"> Tite<br>
+  <input type="radio" name="pergunta4" value="Zagallo"> Zagallo<br>
+
+  <!-- PERGUNTA 5 -->
+  <h3>5. Qual clube conquistou a Libertadores 2019?</h3>
+  <input type="radio" name="pergunta5" value="Flamengo"> Flamengo<br>
+  <input type="radio" name="pergunta5" value="Palmeiras"> Palmeiras<br>
+  <input type="radio" name="pergunta5" value="São Paulo"> São Paulo<br>
+  <input type="radio" name="pergunta5" value="Atlético-MG"> Atlético-MG<br>
+
+  <!-- PERGUNTA 6 -->
+  <h3>6. Qual jogador é conhecido como “Fenômeno”?</h3>
+  <input type="radio" name="pergunta6" value="Ronaldo"> Ronaldo<br>
+  <input type="radio" name="pergunta6" value="Ronaldinho"> Ronaldinho<br>
+  <input type="radio" name="pergunta6" value="Rivaldo"> Rivaldo<br>
+  <input type="radio" name="pergunta6" value="Adriano"> Adriano<br>
+
+  <!-- PERGUNTA 7 -->
+  <h3>7. Quantas Copas do Mundo o Brasil venceu?</h3>
+  <input type="radio" name="pergunta7" value="3"> 3<br>
+  <input type="radio" name="pergunta7" value="4"> 4<br>
+  <input type="radio" name="pergunta7" value="5"> 5<br>
+  <input type="radio" name="pergunta7" value="6"> 6<br>
+
+  <!-- PERGUNTA 8 -->
+  <h3>8. Qual é o mascote do Corinthians?</h3>
+  <input type="radio" name="pergunta8" value="Mosqueteiro"> Mosqueteiro<br>
+  <input type="radio" name="pergunta8" value="Periquito"> Periquito<br>
+  <input type="radio" name="pergunta8" value="Urubu"> Urubu<br>
+  <input type="radio" name="pergunta8" value="Galo"> Galo<br>
+
+  <!-- PERGUNTA 9 -->
+  <h3>9. Em qual clube Zico se tornou ídolo?</h3>
+  <input type="radio" name="pergunta9" value="Flamengo"> Flamengo<br>
+  <input type="radio" name="pergunta9" value="Vasco"> Vasco<br>
+  <input type="radio" name="pergunta9" value="Botafogo"> Botafogo<br>
+  <input type="radio" name="pergunta9" value="Fluminense"> Fluminense<br>
+
+  <!-- PERGUNTA 10 -->
+  <h3>10. O Mineirão fica em qual estado?</h3>
+  <input type="radio" name="pergunta10" value="Minas Gerais"> Minas Gerais<br>
+  <input type="radio" name="pergunta10" value="São Paulo"> São Paulo<br>
+  <input type="radio" name="pergunta10" value="Paraná"> Paraná<br>
+  <input type="radio" name="pergunta10" value="Goiás"> Goiás<br>
+
+  <br><br>
+  <button type="button" onclick="finalizarQuiz()">Finalizar Quiz</button>
+
+</form>
+
+<div id="resultado"></div>
+
+<script>
+function finalizarQuiz() {
+
+  const gabarito = {
+    pergunta1: "Palmeiras",
+    pergunta2: "Santos",
+    pergunta3: "Rio de Janeiro",
+    pergunta4: "Felipão",
+    pergunta5: "Flamengo",
+    pergunta6: "Ronaldo",
+    pergunta7: "5",
+    pergunta8: "Mosqueteiro",
+    pergunta9: "Flamengo",
+    pergunta10: "Minas Gerais"
+  };
+
+  let acertos = 0;
+  let erros = 0;
+
+  for (let pergunta in gabarito) {
+    const resposta = document.querySelector(
+      `input[name="${pergunta}"]:checked`
+    );
+
+    if (resposta) {
+      if (resposta.value === gabarito[pergunta]) {
+        acertos++;
+      } else {
+        erros++;
+      }
+    }
+  }
+
+  document.getElementById("resultado").innerHTML = `
+    <h2>Resultado Final</h2>
+    <p>✅ Acertos: ${acertos}</p>
+    <p>❌ Erros: ${erros}</p>
+  `;
+}
+</script>
+
+</body>
+</html>
